@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff — HavenCraft</title>
+    <meta name="description" content="Meet the staff team behind HavenCraft SMP." />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .page-header {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .staff-card {
+            background: var(--surface);
+            backdrop-filter: blur(var(--blur));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform var(--transition);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .staff-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            image-rendering: pixelated;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .staff-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .staff-role {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .role-owner {
+            background: rgba(255, 80, 80, 0.15);
+            color: #ff5050;
+            border: 1px solid rgba(255, 80, 80, 0.3);
+        }
+
+        .role-admin {
+            background: rgba(255, 138, 0, 0.15);
+            color: #ff8a00;
+            border: 1px solid rgba(255, 138, 0, 0.3);
+        }
+
+        .role-mod {
+            background: rgba(0, 200, 150, 0.15);
+            color: #00c896;
+            border: 1px solid rgba(0, 200, 150, 0.3);
+        }
+
+        .role-helper {
+            background: rgba(79, 140, 255, 0.15);
+            color: #4f8cff;
+            border: 1px solid rgba(79, 140, 255, 0.3);
+        }
+
+        .staff-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR (Copied from index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="HavenCraft Logo" class="brand-logo"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="brand-icon" style="display:none;">HC</div>
+                <span>HavenCraft</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="staff.html" class="active">Staff</a>
+                <a href="rules.html">Rules</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="themeToggle" aria-label="Toggle dark mode"><i
+                        class="fa-solid fa-moon theme-icon"></i></button>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <button class="nav-action-btn user-btn" id="userBtn" aria-label="User account"><svg
+                            class="user-icon-svg" id="userIconDefault" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg></button>
+                </div>
+                <button class="hamburger" id="hamburger"
+                    aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Meet the Team</h1>
+            <p class="subtitle" style="color:var(--text-secondary)">The dedicated people keeping HavenCraft running
+                smoothly.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="staff-grid reveal">
+                <!-- Owner -->
+                <div class="staff-card">
+                    <img src="https://mc-heads.net/avatar/Notch/100" alt="Owner" class="staff-avatar">
+                    <div class="staff-name">JU3L_</div>
+                    <div class="staff-role role-owner">Owner</div>
+                    <p class="staff-desc">Founder and lead developer of HavenCraft. Ensures everything runs smoothly.
+                    </p>
+                </div>
+                <!-- Admin -->
+                <div class="staff-card">
+                    <img src="https://mc-heads.net/avatar/MHF_Herobrine/100" alt="Admin" class="staff-avatar">
+                    <div class="staff-name">Zipp_404</div>
+                    <div class="staff-role role-admin">Admin</div>
+                    <p class="staff-desc">Manages the server infrastructure and community events.</p>
+                </div>
+                <!-- Mod -->
+                <div class="staff-card">
+                    <img src="https://mc-heads.net/avatar/MHF_Alex/100" alt="Moderator" class="staff-avatar">
+                    <div class="staff-name">ModName</div>
+                    <div class="staff-role role-mod">Moderator</div>
+                    <p class="staff-desc">Keeps the chat clean and handles player disputes.</p>
+                </div>
+                <!-- Officer -->
+                <div class="staff-card">
+                    <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Officer" class="staff-avatar">
+                    <div class="staff-name">Rafi_PRX</div>
+                    <div class="staff-role role-officer">Officer</div>
+                    <p class="staff-desc">Assists new players and answers questions in-game.</p>
+                </div>
+				                <div class="staff-card">
+                    <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Officer" class="staff-avatar">
+                    <div class="staff-name">Tahsin_King_</div>
+                    <div class="staff-role role-officer">Officer</div>
+                    <p class="staff-desc">Assists new players and answers questions in-game.</p>
+                </div>
+				                <div class="staff-card">
+                    <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Officer" class="staff-avatar">
+                    <div class="staff-name">(Empty)</div>
+                    <div class="staff-role role-officer">Officer</div>
+                    <p class="staff-desc">Assists new players and answers questions in-game.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer" style="padding: 40px 0; margin-top: 60px; text-align: center;">
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 40px;">
+            <div style="margin-bottom: 20px;">
+                <a href="index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Home</a>
+                <a href="features.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Features</a>
+                <a href="rules.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Rules</a>
+                <a href="gallery.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Gallery</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="https://discord.gg/3bBUcqCyz4" target="_blank" rel="noopener noreferrer"
+                    style="color: var(--primary); font-size: 1.8rem; text-decoration: none; display: inline-block; transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i
+                        class="fa-brands fa-discord"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                &copy; 2026 HavenCraft SMP<br>
+                Bangladeshi Minecraft Community
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

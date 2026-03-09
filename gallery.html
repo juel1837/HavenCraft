@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery — HavenCraft</title>
+    <meta name="description" content="View beautiful screenshots of HavenCraft." />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .page-header {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-weight: 600;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR (Copied from index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="HavenCraft Logo" class="brand-logo"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="brand-icon" style="display:none;">HC</div>
+                <span>HavenCraft</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="staff.html">Staff</a>
+                <a href="rules.html">Rules</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="themeToggle" aria-label="Toggle dark mode"><i
+                        class="fa-solid fa-moon theme-icon"></i></button>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <button class="nav-action-btn user-btn" id="userBtn" aria-label="User account"><svg
+                            class="user-icon-svg" id="userIconDefault" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg></button>
+                </div>
+                <button class="hamburger" id="hamburger"
+                    aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Community Gallery</h1>
+            <p class="subtitle" style="color:var(--text-secondary)">Explore beautiful moments captured by our players.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="gallery-grid reveal-stagger">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x450/111520/00c896?text=Screenshot+1" alt="Spawn Area"
+                        loading="lazy">
+                    <div class="gallery-caption">Main Spawn Area</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x450/111520/00c896?text=Screenshot+2" alt="Community Build"
+                        loading="lazy">
+                    <div class="gallery-caption">Community Build</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x450/111520/00c896?text=Screenshot+3" alt="Landmark"
+                        loading="lazy">
+                    <div class="gallery-caption">Custom Landmark</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x450/111520/00c896?text=Screenshot+4" alt="Event Arena"
+                        loading="lazy">
+                    <div class="gallery-caption">Event Arena</div>
+                </div>
+                <!-- 2 Exactly Added to total 6 -->
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x450/111520/00c896?text=Screenshot+5" alt="PvP Zone"
+                        loading="lazy">
+                    <div class="gallery-caption">PvP Zone</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x450/111520/00c896?text=Screenshot+6" alt="Marketplace"
+                        loading="lazy">
+                    <div class="gallery-caption">Marketplace</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer" style="padding: 40px 0; margin-top: 60px; text-align: center;">
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 40px;">
+            <div style="margin-bottom: 20px;">
+                <a href="index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Home</a>
+                <a href="features.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Features</a>
+                <a href="rules.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Rules</a>
+                <a href="gallery.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Gallery</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="https://discord.gg/3bBUcqCyz4" target="_blank" rel="noopener noreferrer"
+                    style="color: var(--primary); font-size: 1.8rem; text-decoration: none; display: inline-block; transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i
+                        class="fa-brands fa-discord"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                &copy; 2026 HavenCraft SMP<br>
+                Bangladeshi Minecraft Community
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

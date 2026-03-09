@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features — HavenCraft</title>
+    <meta name="description" content="Discover the unique features of HavenCraft SMP." />
+    <!-- Favicon & Fonts & Icons -->
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .page-header {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR (Copied from index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="HavenCraft Logo" class="brand-logo"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="brand-icon" style="display:none;">HC</div>
+                <span>HavenCraft</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="features.html" class="active">Features</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="staff.html">Staff</a>
+                <a href="rules.html">Rules</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon theme-icon"></i>
+                </button>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <button class="nav-action-btn user-btn" id="userBtn" aria-label="User account">
+                        <img src="" alt="" class="user-head" id="userHead" style="display:none;" />
+                        <svg class="user-icon-svg" id="userIconDefault" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <!-- User Dropdown Details Omitted for brevity, assumed handled by script.js -->
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Our Features</h1>
+            <p class="subtitle" style="color:var(--text-secondary)">What makes HavenCraft special?</p>
+        </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-grid reveal-stagger">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-landmark"></i></div>
+                    <h3>Festivals, Reimagined</h3>
+                    <p>Your favorite Bangladeshi celebrations — now in Minecraft. Special events, cultural challenges,
+                        and dedicated worlds where our traditions thrive.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Active Bangladeshi Community</h3>
+                    <p>Every division. Every district. One incredible community. Your next great friendship starts here.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-hammer"></i></div>
+                    <h3>Craft Our Landmarks</h3>
+                    <p>Join hundreds of builders bringing Bangladesh to life. From Mughal forts to modern marvels, every
+                        block celebrates our story. Your masterpiece starts here.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Grief Protection</h3>
+                    <p>Build without fear! Our claim system ensures your hard work is protected from griefers while
+                        still allowing cooperative community builds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                    <h3>Player Economy</h3>
+                    <p>Trade, sell, and become the richest player. Engage in a fully player-driven economy with shops
+                        and auctions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-swords"></i></div>
+                    <h3>PvP Arenas</h3>
+                    <p>Test your skills against other players in dedicated PvP arenas without risking your survival
+                        gear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer" style="padding: 40px 0; margin-top: 60px; text-align: center;">
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 40px;">
+            <div style="margin-bottom: 20px;">
+                <a href="index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Home</a>
+                <a href="features.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Features</a>
+                <a href="rules.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Rules</a>
+                <a href="gallery.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Gallery</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="https://discord.gg/3bBUcqCyz4" target="_blank" rel="noopener noreferrer"
+                    style="color: var(--primary); font-size: 1.8rem; text-decoration: none; display: inline-block; transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i
+                        class="fa-brands fa-discord"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                &copy; 2026 HavenCraft SMP<br>
+                Bangladeshi Minecraft Community
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
