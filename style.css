@@ -495,7 +495,7 @@ section {
    HERO SECTION
    ============================================ */
 .hero {
-  padding-top: calc(var(--nav-height) + 10px);
+  padding-top: calc(var(--nav-height) + 5px);
   padding-bottom: 40px;
   text-align: center;
   position: relative;
