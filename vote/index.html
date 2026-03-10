@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vote — HavenCraft</title>
+    <meta name="description" content="Vote for HavenCraft SMP and earn rewards." />
+    <link rel="icon" href="../logo/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        .page-header {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .vote-content {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .vote-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand"><img src="../logo/icon.png" alt="HavenCraft Logo" class="brand-logo"
+                    loading="lazy" /></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">Home</a>
+                <a href="../features/index.html">Features</a>
+                <a href="../rank/index.html">Ranks</a>
+                <a href="../gallery/index.html">Gallery</a>
+                <a href="../staff/index.html">Staff</a>
+                <a href="../rules/index.html">Rules</a>
+                <a href="../about/index.html">About</a>
+                <a href="../contact/index.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="themeToggle" aria-label="Toggle dark mode"><i
+                        class="fa-solid fa-moon theme-icon"></i></button>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <button class="nav-action-btn user-btn" id="userBtn" aria-label="User account">
+                        <img src="" alt="" class="user-head" id="userHead" style="display:none;" loading="lazy" />
+                        <svg class="user-icon-svg" id="userIconDefault" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-dropdown-header">Login with Gametag</div>
+                        <div class="user-dropdown-body">
+                            <input type="text" id="gametagInput" class="gametag-input"
+                                placeholder="Enter Minecraft username..." maxlength="16" />
+                            <button class="btn btn-primary btn-sm gametag-submit" id="gametagSubmit">Login</button>
+                        </div>
+                        <div class="user-dropdown-logged" id="userLoggedIn" style="display:none;">
+                            <img src="" alt="" class="user-dropdown-avatar" id="userDropdownAvatar" loading="lazy" />
+                            <span class="user-dropdown-name" id="userDropdownName"></span>
+                            <button class="btn btn-outline btn-sm" id="userLogout">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburger"
+                    aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Vote for HavenCraft</h1>
+            <p class="subtitle" style="color:var(--text-secondary)">Support the server and earn in-game rewards!</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="vote-content reveal">
+                <p>Voting for HavenCraft on server listing sites helps us grow and brings new players to the community.
+                    As a thank you, you'll receive in-game rewards for every vote!</p>
+                <p>Vote links will be added here soon. Stay tuned!</p>
+                <a href="https://discord.gg/3bBUcqCyz4" class="btn btn-primary" target="_blank"
+                    rel="noopener noreferrer"><i class="fa-brands fa-discord"></i> Join Discord for Updates</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer" style="padding: 40px 0; margin-top: 60px; text-align: center;">
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 40px;">
+            <div style="margin-bottom: 20px;">
+                <a href="../index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Home</a>
+                <a href="../features/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Features</a>
+                <a href="../rank/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Ranks</a>
+                <a href="../rules/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Rules</a>
+                <a href="../gallery/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Gallery</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="../privacy/index.html"
+                    style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin: 0 10px;">Privacy
+                    Policy</a>
+                <a href="../terms/index.html"
+                    style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin: 0 10px;">Terms
+                    of Service</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="https://discord.gg/3bBUcqCyz4" target="_blank" rel="noopener noreferrer"
+                    style="color: var(--primary); font-size: 1.8rem; text-decoration: none; display: inline-block; transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i
+                        class="fa-brands fa-discord"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">&copy; 2026 HavenCraft
+                SMP<br>Bangladeshi Minecraft Community<br><span
+                    style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; display: block;">Developed by
+                    <a href="#" style="color: var(--primary); text-decoration: none;">HavenCraft Devs</a></span></p>
+        </div>
+    </footer>
+    <div class="toast" id="toast"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

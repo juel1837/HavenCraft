@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff — HavenCraft</title>
+    <meta name="description" content="Meet the staff team behind HavenCraft SMP." />
+    <link rel="icon" href="../logo/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        .page-header {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .staff-card {
+            background: var(--surface);
+            backdrop-filter: blur(var(--blur));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform var(--transition), border-color var(--transition);
+            cursor: pointer;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .staff-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            image-rendering: pixelated;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .staff-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .staff-role {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .role-owner {
+            background: rgba(255, 80, 80, 0.15);
+            color: #ff5050;
+            border: 1px solid rgba(255, 80, 80, 0.3);
+        }
+
+        .role-admin {
+            background: rgba(255, 138, 0, 0.15);
+            color: #ff8a00;
+            border: 1px solid rgba(255, 138, 0, 0.3);
+        }
+
+        .role-mod {
+            background: rgba(0, 200, 150, 0.15);
+            color: #00c896;
+            border: 1px solid rgba(0, 200, 150, 0.3);
+        }
+
+        .role-helper {
+            background: rgba(79, 140, 255, 0.15);
+            color: #4f8cff;
+            border: 1px solid rgba(79, 140, 255, 0.3);
+        }
+
+        .role-officer {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        /* Staff Modal */
+        .staff-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .staff-modal-overlay.show {
+            display: flex;
+        }
+
+        .staff-modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .staff-modal .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .staff-modal .close-modal:hover {
+            color: var(--text);
+        }
+
+        .staff-modal-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            image-rendering: pixelated;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .staff-modal-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .staff-modal-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <img src="../logo/icon.png" alt="HavenCraft Logo" class="brand-logo" loading="lazy" />
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">Home</a>
+                <a href="../features/index.html">Features</a>
+                <a href="../rank/index.html">Ranks</a>
+                <a href="../gallery/index.html">Gallery</a>
+                <a href="../staff/index.html" class="active">Staff</a>
+                <a href="../rules/index.html">Rules</a>
+                <a href="../about/index.html">About</a>
+                <a href="../contact/index.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon theme-icon"></i>
+                </button>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <button class="nav-action-btn user-btn" id="userBtn" aria-label="User account">
+                        <img src="" alt="" class="user-head" id="userHead" style="display:none;" loading="lazy" />
+                        <svg class="user-icon-svg" id="userIconDefault" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-dropdown-header">Login with Gametag</div>
+                        <div class="user-dropdown-body">
+                            <input type="text" id="gametagInput" class="gametag-input"
+                                placeholder="Enter Minecraft username..." maxlength="16" />
+                            <button class="btn btn-primary btn-sm gametag-submit" id="gametagSubmit">Login</button>
+                        </div>
+                        <div class="user-dropdown-logged" id="userLoggedIn" style="display:none;">
+                            <img src="" alt="" class="user-dropdown-avatar" id="userDropdownAvatar" loading="lazy" />
+                            <span class="user-dropdown-name" id="userDropdownName"></span>
+                            <button class="btn btn-outline btn-sm" id="userLogout">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Meet the Team</h1>
+            <p class="subtitle" style="color:var(--text-secondary)">The dedicated people keeping HavenCraft running
+                smoothly. Click on a card to learn more.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="staff-grid reveal" id="staffGrid">
+                <!-- Staff cards are generated by JavaScript below for easy editing -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Detail Modal -->
+    <div class="staff-modal-overlay" id="staffModal">
+        <div class="staff-modal">
+            <button class="close-modal" id="closeStaffModal" aria-label="Close modal">&times;</button>
+            <img src="" alt="" class="staff-modal-avatar" id="staffModalAvatar" />
+            <div class="staff-modal-name" id="staffModalName"></div>
+            <div id="staffModalRole"></div>
+            <p class="staff-modal-desc" id="staffModalDesc"></p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer" style="padding: 40px 0; margin-top: 60px; text-align: center;">
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 40px;">
+            <div style="margin-bottom: 20px;">
+                <a href="../index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Home</a>
+                <a href="../features/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Features</a>
+                <a href="../rank/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Ranks</a>
+                <a href="../rules/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Rules</a>
+                <a href="../gallery/index.html"
+                    style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-weight: 500;">Gallery</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="../privacy/index.html"
+                    style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin: 0 10px;">Privacy
+                    Policy</a>
+                <a href="../terms/index.html"
+                    style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin: 0 10px;">Terms
+                    of Service</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="https://discord.gg/3bBUcqCyz4" target="_blank" rel="noopener noreferrer"
+                    style="color: var(--primary); font-size: 1.8rem; text-decoration: none; display: inline-block; transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i
+                        class="fa-brands fa-discord"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                &copy; 2026 HavenCraft SMP<br>Bangladeshi Minecraft Community<br>
+                <span style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; display: block;">Developed
+                    by <a href="#" style="color: var(--primary); text-decoration: none;">HavenCraft Devs</a></span>
+            </p>
+        </div>
+    </footer>
+    <div class="toast" id="toast"></div>
+    <script src="../script.js"></script>
+    <script>
+        /* =============================================
+           STAFF DATA — Edit this array to add/remove staff
+           ============================================= */
+        const staffMembers = [
+            {
+                name: "JU3L_",
+                role: "Owner",
+                roleClass: "role-owner",
+                avatar: "https://mc-heads.net/avatar/Notch/100",
+                description: "Founder and lead developer of HavenCraft. Ensures everything runs smoothly and the community thrives."
+            },
+            {
+                name: "Zipp_404",
+                role: "Admin",
+                roleClass: "role-admin",
+                avatar: "https://mc-heads.net/avatar/MHF_Herobrine/100",
+                description: "Manages the server infrastructure and community events. Keeps the backend running flawlessly."
+            },
+            {
+                name: "ModName",
+                role: "Moderator",
+                roleClass: "role-mod",
+                avatar: "https://mc-heads.net/avatar/MHF_Alex/100",
+                description: "Keeps the chat clean and handles player disputes. Ensures server rules are followed."
+            },
+            {
+                name: "Rafi_PRX",
+                role: "Officer",
+                roleClass: "role-officer",
+                avatar: "https://mc-heads.net/avatar/MHF_Steve/100",
+                description: "Assists new players and answers questions in-game. A friendly face for newcomers."
+            },
+            {
+                name: "Tahsin_King_",
+                role: "Officer",
+                roleClass: "role-officer",
+                avatar: "https://mc-heads.net/avatar/MHF_Steve/100",
+                description: "Assists new players and answers questions in-game. Always available to help."
+            }
+            // To add a new staff member, copy the block below and fill in the details:
+            // {
+            //     name: "NewStaffName",
+            //     role: "Helper",
+            //     roleClass: "role-helper",
+            //     avatar: "https://mc-heads.net/avatar/NewStaffName/100",
+            //     description: "Description of what they do."
+            // }
+        ];
+
+        // Render staff cards
+        const staffGrid = document.getElementById('staffGrid');
+        staffMembers.forEach((member, index) => {
+            const card = document.createElement('div');
+            card.className = 'staff-card';
+            card.setAttribute('data-index', index);
+            card.innerHTML = `
+            <img src="${member.avatar}" alt="${member.name}" class="staff-avatar">
+            <div class="staff-name">${member.name}</div>
+            <div class="staff-role ${member.roleClass}">${member.role}</div>
+        `;
+            card.addEventListener('click', () => openStaffModal(index));
+            staffGrid.appendChild(card);
+        });
+
+        // Modal logic
+        function openStaffModal(index) {
+            const member = staffMembers[index];
+            document.getElementById('staffModalAvatar').src = member.avatar;
+            document.getElementById('staffModalName').textContent = member.name;
+            document.getElementById('staffModalRole').innerHTML = `<span class="staff-role ${member.roleClass}">${member.role}</span>`;
+            document.getElementById('staffModalDesc').textContent = member.description;
+            document.getElementById('staffModal').classList.add('show');
+        }
+
+        document.getElementById('closeStaffModal').addEventListener('click', () => {
+            document.getElementById('staffModal').classList.remove('show');
+        });
+        document.getElementById('staffModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('staffModal')) {
+                document.getElementById('staffModal').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
