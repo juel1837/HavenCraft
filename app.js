@@ -258,11 +258,15 @@ document.getElementById('btn-auto-cat').addEventListener('click', async (e) => {
 
   try {
     const prompt = `Categorize this expense item: "${title}". Respond ONLY with one of these exact words: Food, Transport, Shopping, Bills, Other.`;
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey.trim()}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
     });
+    if(!res.ok) {
+      const errorData = await res.json().catch(()=>({}));
+      throw new Error(errorData?.error?.message || `API Error: ${res.status}`);
+    }
     const data = await res.json();
     const cat = data.candidates[0].content.parts[0].text.trim();
     if(['Food','Transport','Shopping','Bills','Other'].includes(cat)) {
@@ -272,7 +276,7 @@ document.getElementById('btn-auto-cat').addEventListener('click', async (e) => {
       document.getElementById('exp-category').value = 'Other';
     }
   } catch(err) {
-    showToast('Auto-categorize failed', 'error');
+    showToast(`AI Error: ${err.message}`, 'error');
   } finally {
     btn.innerHTML = '<i data-lucide="sparkles"></i>';
     btn.disabled = false;
@@ -387,13 +391,16 @@ btnAiSend.addEventListener('click', async () => {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey.trim()}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ contents: [{ parts: [{ text }] }] })
     });
     
-    if(!res.ok) throw new Error('API Error');
+    if(!res.ok) {
+      const errorData = await res.json().catch(()=>({}));
+      throw new Error(errorData?.error?.message || `API Error: ${res.status}`);
+    }
     const data = await res.json();
     const aiText = data.candidates[0].content.parts[0].text;
     
@@ -401,7 +408,7 @@ btnAiSend.addEventListener('click', async () => {
     addChatMessage(aiText, 'ai');
   } catch(err) {
     loadingDiv.remove();
-    addChatMessage("Error: Could not connect to Gemini API. Please check your API Key in Settings.", 'ai');
+    addChatMessage(`**Error:** ${err.message}`, 'ai');
   }
 });
 
