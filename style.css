@@ -24,6 +24,7 @@ body {
 .page.active { display: flex; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
+#tab-ai.active { display: flex; }
 .mobile-only { display: none; }
 
 .glass-card {
