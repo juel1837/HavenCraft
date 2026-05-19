@@ -116,13 +116,21 @@ document.getElementById('btn-logout').addEventListener('click', () => {
 
 // --- Data Loading & Real-time Listeners ---
 let userApiKey = '';
+let userModel = 'gemini-pro';
+let userSystemPrompt = '';
 
 function loadData(uid) {
-  // Settings (API Key)
+  // Settings (API Key & Config)
   db.collection('users').doc(uid).collection('settings').doc('profile').onSnapshot(doc => {
-    if(doc.exists && doc.data().apiKey) {
-      userApiKey = doc.data().apiKey;
+    if(doc.exists) {
+      const data = doc.data();
+      userApiKey = data.apiKey || '';
+      userModel = data.model || 'gemini-pro';
+      userSystemPrompt = data.systemPrompt || '';
+      
       document.getElementById('setting-apikey').value = userApiKey;
+      document.getElementById('setting-model').value = userModel;
+      document.getElementById('setting-prompt').value = userSystemPrompt;
     }
   });
 
@@ -258,7 +266,7 @@ document.getElementById('btn-auto-cat').addEventListener('click', async (e) => {
 
   try {
     const prompt = `Categorize this expense item: "${title}". Respond ONLY with one of these exact words: Food, Transport, Shopping, Bills, Other.`;
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey.trim()}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${userModel}:generateContent?key=${userApiKey.trim()}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
@@ -344,14 +352,19 @@ document.getElementById('btn-save-task').addEventListener('click', () => {
 // Settings Save
 document.getElementById('btn-save-settings').addEventListener('click', () => {
   const apiKey = document.getElementById('setting-apikey').value;
+  const model = document.getElementById('setting-model').value;
+  const systemPrompt = document.getElementById('setting-prompt').value;
+  
   const btnText = document.getElementById('settings-save-text');
   const spinner = document.getElementById('settings-spinner');
   
   btnText.style.display = 'none';
   spinner.style.display = 'block';
 
-  db.collection('users').doc(auth.currentUser.uid).collection('settings').doc('profile').set({ apiKey }, { merge: true }).then(() => {
+  db.collection('users').doc(auth.currentUser.uid).collection('settings').doc('profile').set({ apiKey, model, systemPrompt }, { merge: true }).then(() => {
     userApiKey = apiKey;
+    userModel = model;
+    userSystemPrompt = systemPrompt;
     showToast('Settings Saved Successfully!');
     btnText.style.display = 'block';
     spinner.style.display = 'none';
@@ -391,10 +404,12 @@ btnAiSend.addEventListener('click', async () => {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey.trim()}`, {
+    const finalPrompt = userSystemPrompt ? `System Rules: ${userSystemPrompt}\n\nUser: ${text}` : text;
+    
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${userModel}:generateContent?key=${userApiKey.trim()}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents: [{ parts: [{ text }] }] })
+      body: JSON.stringify({ contents: [{ parts: [{ text: finalPrompt }] }] })
     });
     
     if(!res.ok) {

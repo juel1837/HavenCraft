@@ -204,6 +204,19 @@
             <input type="password" id="setting-apikey" class="input-dark" placeholder="AIzaSy...">
             <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Required for AI Chat and auto-categorization. Get it from Google AI Studio.</p>
           </div>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; color: var(--text-secondary); margin-bottom: 8px; font-size: 14px;">AI Model</label>
+            <select id="setting-model" class="input-dark">
+              <option value="gemini-pro">Gemini Pro (Most Stable)</option>
+              <option value="gemini-1.5-flash">Gemini 1.5 Flash (Fast & Advanced)</option>
+              <option value="gemini-1.5-pro">Gemini 1.5 Pro (Powerful)</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; color: var(--text-secondary); margin-bottom: 8px; font-size: 14px;">Personal System Prompt</label>
+            <textarea id="setting-prompt" class="input-dark" rows="4" placeholder="You are a helpful and polite personal assistant..." style="resize: vertical;"></textarea>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Tell the AI how it should behave.</p>
+          </div>
           <button id="btn-save-settings" class="btn-primary" style="width: 100%;">
             <span id="settings-save-text">Save Settings</span>
             <div id="settings-spinner" class="spinner" style="display: none; width: 18px; height: 18px;"></div>
